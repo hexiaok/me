@@ -1,6 +1,11 @@
 .App {
-  font-family: sans-serif;
-  text-align: center;
+  font-family: 'Lato'sans-serif;
   height: 100vh;
   width: 100vw;
+  background-color: #080808;
+}
+
+.html, body, #root, #root>div {
+  height: 100%;
+  margin: 0;
 }
