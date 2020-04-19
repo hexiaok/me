@@ -1,14 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import ReactGlobe from './react-globe';
 
 import Container from 'react-bootstrap/Container';
-import darkGlobe from './globe_dark.jpg'
 import markers from './markers';
 
 function App() {
+  const [click, setClick] = useState(0)
   return (
-    <div className="App">
+    <div className="App" onMouseDown={() => setClick(!click)}>
       <Container fluid>
         <div className="row" style={{ height: "100vh" }}>
           <div style={{
@@ -24,16 +24,17 @@ function App() {
             <div style={{ height: "50%", width: "100%" }}>
               <ReactGlobe
                 globeOptions={{
-                  texture: darkGlobe,
                   enableBackground: false,
                   enableClouds: false,
-                  enableGlow: false
+                  enableGlow: false,
+                  cloudsTexture: null
                 }}
                 cameraOptions={{
                   autoRotateSpeed: 0.8,
-                  enableZoom: false,
+                  enableZoom: true,
+                  clickedOut: click
                 }}
-                markers={markers} 
+                markers={markers}
                 markerOptions={{
                   enableTooltip: true,
                   getTooltipContent: marker => `${marker.city} ${marker.year}`,

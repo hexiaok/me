@@ -39,7 +39,7 @@ var CAMERA_MIN_POLAR_ANGLE = 0;
 var CAMERA_MIN_DISTANCE_RADIUS_SCALE = 1.1;
 var CLOUDS_RADIUS_OFFSET = 1;
 var GLOBE_SEGMENTS = 50;
-var INITIAL_COORDINATES = [37.773972, -122.431297];
+var INITIAL_COORDINATES = [29.8683, 121.5440];
 var MARKER_DEFAULT_COLOR = 'gold';
 var MARKER_SEGMENTS = 10;
 var MARKER_UNIT_RADIUS_SCALE = 0.01;
@@ -166,6 +166,7 @@ var Tooltip = /** @class */ (function () {
         });
     }
     Tooltip.prototype.destroy = function () {
+        console.log("Tooltip destroy")
         this.instance.destroy();
     };
     Tooltip.prototype.hide = function () {
@@ -301,15 +302,24 @@ var Globe = /** @class */ (function () {
                 _this.tooltip.hide();
             }
         });
-        scene.on('click', function (event) {
+        var handleClick = function (event) {
+            // tony
+            console.log(event)
+            _this.orbitControls.autoRotate = true;
+            console.log("handleClick")
+            _this.tooltip.hide();
             if (_this.isFocusing()) {
                 return;
             }
-            // if (_this.options.focus.enableDefocus && _this.preFocusPosition) {
-            //     _this.callbacks.onDefocus(_this.focus, event.data.originalEvent);
-            //     _this.updateFocus(undefined, _this.options.focus);
-            // }
-        });
+            console.log("enableDefocus", _this.options.focus.enableDefocus)
+            console.log("preFocusPosition", _this.preFocusPosition)
+            if (_this.options.focus.enableDefocus && _this.preFocusPosition) {
+                _this.callbacks.onDefocus(_this.focus, event.data.originalEvent);
+                _this.updateFocus(undefined, _this.options.focus);
+            }
+        }
+        scene.on('click', handleClick);
+        scene.on('touchstart', handleClick);
         // assign values to class variables
         this.activeMarker = undefined;
         this.activeMarkerObject = undefined;
@@ -420,6 +430,7 @@ var Globe = /** @class */ (function () {
             this.camera.position.set(x, y, z);
             this.initialCoordinates = initialCoordinates;
         }
+        console.log("STOP3", cameraOptions)
         this.camera.far = CAMERA_FAR;
         this.camera.fov = CAMERA_FOV;
         this.camera.near = CAMERA_NEAR;
@@ -629,10 +640,14 @@ var Globe = /** @class */ (function () {
             var handleClick = function (event) {
                 event.stopPropagation();
                 var originalEvent = event.data.originalEvent;
+                var clientX = originalEvent.clientX || originalEvent.targetTouches[0].clientX
+                var clientY = originalEvent.clientY || originalEvent.targetTouches[0].clientY
                 if (enableTooltip) {
-                    _this.tooltip.show(originalEvent.clientX, originalEvent.clientY, getTooltipContent(marker));
+                    _this.tooltip.show(clientX, clientY, getTooltipContent(marker));
                 }
                 // tony
+                this.orbitControls.autoRotate = false
+                console.log("STOP")
                 // _this.updateFocus(marker.coordinates);
                 // _this.callbacks.onClickMarker(marker, markerObject, event.data.originalEvent);
             };

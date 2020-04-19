@@ -19,4 +19,6 @@
   color: white;
 }
 
-
+canvas:focus {
+  outline: none
+}

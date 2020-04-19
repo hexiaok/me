@@ -1,10 +1,9 @@
-import { Marker } from 'react-globe';
 
-const markers: Marker[] = [
+const markers = [
     {
         id: 1,
         city: 'Ningbo',
-        year: '-2006',
+        year: 'Birth-2006',
         color: 'white',
         coordinates: [29.8683, 121.5440],
         value: 150,
