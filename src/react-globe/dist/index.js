@@ -78,7 +78,7 @@ var defaultGlobeOptions = {
     enableBackground: true,
     enableClouds: true,
     enableGlow: true,
-    glowCoefficient: 0.1,
+    glowCoefficient: 0,
     glowColor: '#d1d1d1',
     glowPower: 3,
     glowRadiusScale: 0.2,
@@ -92,7 +92,7 @@ var defaultLightOptions = {
     pointLightPositionRadiusScales: [-2, 1, -1],
 };
 var defaultDotMarkerOptions = {
-    activeScale: 1.3,
+    activeScale: 1,
     enableGlow: true,
     enableTooltip: true,
     enterAnimationDuration: 1000,
@@ -101,8 +101,8 @@ var defaultDotMarkerOptions = {
     exitEasingFunction: ['Cubic', 'Out'],
     getTooltipContent: function (marker) { return JSON.stringify(marker.coordinates); },
     glowCoefficient: 0,
-    glowPower: 3,
-    glowRadiusScale: 2,
+    glowPower: 1,
+    glowRadiusScale: 1.5,
     radiusScaleRange: [0.005, 0.02],
     type: exports.MarkerType.Dot,
 };

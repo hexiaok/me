@@ -60,7 +60,7 @@ export const defaultGlobeOptions: GlobeOptions = {
   enableBackground: true,
   enableClouds: true,
   enableGlow: true,
-  glowCoefficient: 0.1,
+  glowCoefficient: 0,
   glowColor: '#d1d1d1',
   glowPower: 3,
   glowRadiusScale: 0.2,

@@ -17,11 +17,11 @@ function App() {
             alignItems: "center",
             backgroundColor: "#ffffff"
           }}
-            className="col-lg-6">
-            <h1 style={{ padding: "10%", lineHeight: "160%" }}>Jian He<br />Designer, living in Berlin.</h1>
+            className="col-xl-6">
+            <h1 style={{padding: "8.6%", lineHeight: "160%" }}>Jian He<br />Designer now based in Berlin.</h1>
           </div>
-          <div className="col-lg-6" style={{ display: "flex", alignItems: "center" }}>
-            <div style={{ height: "50%", width: "100%" }}>
+          <div className="col-xl-6" style={{ display: "flex", alignItems: "center" }}>
+            <div style={{ height: "64%", width: "100%" }}>
               <ReactGlobe
                 globeOptions={{
                   enableBackground: false,
@@ -36,9 +36,11 @@ function App() {
                 }}
                 markers={markers}
                 markerOptions={{
+                  glowCoefficient: 0.25,
+                  activeScale: 1,
                   enableTooltip: true,
                   getTooltipContent: marker => `${marker.city} ${marker.year}`,
-                  // radiusScaleRange: [0.005, 0.01],
+                  radiusScaleRange: [0.001, 0.045],
                 }}
               />
             </div>
