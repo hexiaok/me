@@ -5,7 +5,7 @@ const markers = [
         city: 'Ningbo',
         year: 'born-2006',
         activity: '',
-        color: 'rgba(255, 255, 255, 0.1)',
+        color: 'white',
         coordinates: [29.8683, 121.5440],
         value: 100,
     },

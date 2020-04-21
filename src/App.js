@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
 import ReactGlobe from './react-globe';
-
 import Container from 'react-bootstrap/Container';
 import markers from './markers';
 
@@ -18,7 +17,7 @@ function App() {
             backgroundColor: "#ffffff"
           }}
             className="col-xl-6">
-            <h1 style={{padding: "8.6%", lineHeight: "160%" }}>Jian He<br />Designer now based in Berlin.</h1>
+            <h1 style={{padding: "8.6%", lineHeight: "160%" }}>Jian He<br />Designer now based in Berlin</h1>
           </div>
           <div className="col-xl-6" style={{ display: "flex", alignItems: "center" }}>
             <div style={{ height: "64%", width: "100%" }}>
