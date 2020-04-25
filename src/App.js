@@ -38,7 +38,7 @@ function App() {
                   glowCoefficient: 0.25,
                   activeScale: 1,
                   enableTooltip: true,
-                  getTooltipContent: marker => `${marker.city} ${marker.year}`,
+                  getTooltipContent: marker => `${marker.city} ${marker.year} <br> ${marker.activity}`,
                   radiusScaleRange: [0.001, 0.045],
                 }}
               />
