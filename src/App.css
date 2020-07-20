@@ -1,8 +1,3 @@
-.App {
-  color: #080808;
-  font-family: 'Merriweather Sans', sans-serif;
-}
-
 canvas:focus {
   outline: none
 }

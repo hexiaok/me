@@ -2,9 +2,12 @@
   height: 100vh;
   width: 100vw;
   background-color: #080808;
+  font-family: 'Merriweather Sans', sans-serif;
 }
 
 .html, body, #root, #root>div {
   height: 100%;
   margin: 0;
 }
+
+
