@@ -77,7 +77,7 @@ var defaultGlobeOptions = {
     glowColor: '#d1d1d1',
     glowPower: 3,
     glowRadiusScale: 0.2,
-    texture: 'https://raw.githubusercontent.com/chrisrzhou/react-globe/master/textures/globe_dark.jpg',
+    texture: './globe_dark.jpg',
 };
 var defaultLightOptions = {
     ambientLightColor: 'white',
