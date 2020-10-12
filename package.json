@@ -16,7 +16,8 @@
     "react-globe": "^4.0.0",
     "react-scripts": "3.4.1",
     "react-three-fiber": "^4.2.18",
-    "three": "^0.115.0"
+    "three": "^0.115.0",
+    "tippy.js": "^6.2.7"
   },
   "scripts": {
     "start": "react-scripts start",

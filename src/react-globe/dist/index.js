@@ -75,8 +75,8 @@ var defaultGlobeOptions = {
     backgroundTexture: 'https://raw.githubusercontent.com/chrisrzhou/react-globe/master/textures/background.png',
     cloudsOpacity: 0.3,
     cloudsTexture: 'https://raw.githubusercontent.com/chrisrzhou/react-globe/master/textures/clouds.png',
-    enableBackground: true,
-    enableClouds: true,
+    enableBackground: false,
+    enableClouds: false,
     enableGlow: true,
     glowCoefficient: 0,
     glowColor: '#d1d1d1',
@@ -93,7 +93,7 @@ var defaultLightOptions = {
 };
 var defaultDotMarkerOptions = {
     activeScale: 1,
-    enableGlow: true,
+    enableGlow: false,
     enableTooltip: true,
     enterAnimationDuration: 1000,
     enterEasingFunction: ['Linear', 'None'],

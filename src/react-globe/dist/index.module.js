@@ -70,13 +70,13 @@ var defaultGlobeOptions = {
     backgroundTexture: 'https://raw.githubusercontent.com/chrisrzhou/react-globe/master/textures/background.png',
     cloudsOpacity: 0.3,
     cloudsTexture: 'https://raw.githubusercontent.com/chrisrzhou/react-globe/master/textures/clouds.png',
-    enableBackground: true,
-    enableClouds: true,
+    enableBackground: false,
+    enableClouds: false,
     enableGlow: true,
     glowCoefficient: 0.1,
     glowColor: '#d1d1d1',
     glowPower: 3,
-    glowRadiusScale: 0.2,
+    glowRadiusScale: 0.1,
     texture: './globe_dark.jpg',
 };
 var defaultLightOptions = {
@@ -96,8 +96,8 @@ var defaultDotMarkerOptions = {
     exitEasingFunction: ['Cubic', 'Out'],
     getTooltipContent: function (marker) { return JSON.stringify(marker.coordinates); },
     glowCoefficient: 0,
-    glowPower: 3,
-    glowRadiusScale: 2,
+    glowPower: 2,
+    glowRadiusScale: 1,
     radiusScaleRange: [0.005, 0.02],
     type: MarkerType.Dot,
 };
@@ -158,11 +158,13 @@ function __spreadArrays() {
 }
 
 var TOOLTIP_OFFSET = 10;
+
 var Tooltip = /** @class */ (function () {
     function Tooltip(div) {
         this.div = div;
         this.instance = tippy(this.div, {
             animation: 'scale',
+            theme: 'tomato',
         });
     }
     Tooltip.prototype.destroy = function () {

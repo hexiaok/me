@@ -1,3 +1,18 @@
 canvas:focus {
   outline: none
 }
+
+.tippy-box[data-theme~='tomato'] {
+  background-color: rgba(247, 196, 66, 0.65);
+  color: #080808;
+  border-radius: 0;
+  line-height: 1.6;
+}
+
+.tippy-box[data-theme~='tomato'][data-placement^='top'] > .tippy-arrow::before {
+  border-top-color: rgba(247, 196, 66, 0);
+}
+
+div {
+  white-space: pre-wrap;
+} 
