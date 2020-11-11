@@ -1,48 +1,47 @@
 import React, { useState } from 'react';
 import './App.css';
-import ReactGlobe from './react-globe';
 import Container from 'react-bootstrap/Container';
-import markers from './markers';
-import 'tippy.js/dist/tippy.css';
-import 'tippy.js/animations/scale.css';
-import 'tippy.js/dist/svg-arrow.css';
+import Globe from './Globe'
 
-function App() {
-  const [click, setClick] = useState(0)
-  return (
-    <div className="App" onMouseDown={() => setClick(!click)}>
+
+class App extends React.Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {moveGlobeToLeft: true}
+  }
+  
+  render() {
+    return (
+    <div className="App">
       <Container fluid>
         <div className="row" style={{ height: "100vh" }}>
-          <div 
-            className="col-xl-6 index-text">
-            <div>
-            <h1 style={{fontSize: 40}} className= "animate__animated animate__fadeInUp" >Jian He</h1>
-            <p style={{fontSize: 24}} className= "animate__animated animate__fadeInUp" >Designer based in Berlin </p>
+        <div className="col-xl-6 index-text" style={{ padding: "0" }}>
+            {this.state.moveGlobeToLeft === true ? null :<Globe />}
+            <div style={{width: "75%" }}>
+            <h1 className="index-header">This is Jian He.</h1>
+            <p className="index-body">
+            Wanderlust.
+            <br />Born in China, lived and worked in Boston, Singapore and now in Berlin.
+            <br />Always interested in trying new tools and methods to solve different problems.
+            <br />Keep on learning and getting inspired.
+            <br />Never stop exploring. 
+            </p>
+            <p onClick={() => this.setState({moveGlobeToLeft: !this.state.moveGlobeToLeft})}>Click</p>
+            {/* <a className="index-link" href="https://www.linkedin.com/in/jian-he-3a6056119/">Get connected  &#8594;</a> */}
             </div>  
           </div>
           <div className="col-xl-6" style={{ display: "flex", alignItems: "center" }}>
             <div style={{ height: "50%", width: "100%" }}>
-            <ReactGlobe
-                cameraOptions={{
-                  autoRotateSpeed: 0.8,
-                  enableZoom: false,
-                  clickedOut: click
-                }}
-                markers={markers}
-                markerOptions={{
-                  glowCoefficient: 0.25,
-                  activeScale: 1,
-                  enableTooltip: true,
-                  getTooltipContent: marker => `${marker.year}${marker.city}\n${marker.activity}`,
-                  radiusScaleRange: [0.001, 0.045],
-                }}
-              /> 
+              {this.state.moveGlobeToLeft === true ? <Globe /> : null}
             </div>
           </div>
         </div>
+    
       </Container>
     </div>
-  );
+    )
+  }
 }
 
 export default App;
