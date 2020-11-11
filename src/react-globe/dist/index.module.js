@@ -304,24 +304,16 @@ var Globe = /** @class */ (function () {
                 _this.tooltip.hide();
             }
         });
-        var handleClick = function (event) {
+        scene.on('click', function (event) {
             // tony
-            console.log(event)
-            _this.orbitControls.autoRotate = true;
-            console.log("handleClick")
-            _this.tooltip.hide();
             if (_this.isFocusing()) {
                 return;
             }
-            console.log("enableDefocus", _this.options.focus.enableDefocus)
-            console.log("preFocusPosition", _this.preFocusPosition)
             if (_this.options.focus.enableDefocus && _this.preFocusPosition) {
                 _this.callbacks.onDefocus(_this.focus, event.data.originalEvent);
                 _this.updateFocus(undefined, _this.options.focus);
             }
-        }
-        scene.on('click', handleClick);
-        scene.on('touchstart', handleClick);
+        })
         // assign values to class variables
         this.activeMarker = undefined;
         this.activeMarkerObject = undefined;
@@ -642,16 +634,12 @@ var Globe = /** @class */ (function () {
             var handleClick = function (event) {
                 event.stopPropagation();
                 var originalEvent = event.data.originalEvent;
-                var clientX = originalEvent.clientX || originalEvent.targetTouches[0].clientX
-                var clientY = originalEvent.clientY || originalEvent.targetTouches[0].clientY
                 if (enableTooltip) {
-                    _this.tooltip.show(clientX, clientY, getTooltipContent(marker));
+                    _this.tooltip.show(originalEvent.clientX, originalEvent.clientY, getTooltipContent(marker));
                 }
-                // tony
-                this.orbitControls.autoRotate = false
-                console.log("STOP")
-                // _this.updateFocus(marker.coordinates);
-                // _this.callbacks.onClickMarker(marker, markerObject, event.data.originalEvent);
+                //tony
+                _this.updateFocus(marker.coordinates);
+                _this.callbacks.onClickMarker(marker, markerObject, event.data.originalEvent);
             };
             markerObject.on('click', handleClick.bind(_this));
             markerObject.on('touchstart', handleClick.bind(_this));
@@ -668,13 +656,13 @@ var Globe = /** @class */ (function () {
                         (_a = markerObject.scale).set.apply(_a, from);
                     }
                 });
-                // var originalEvent = event.data.originalEvent;
-                // _this.activeMarker = marker;
-                // _this.activeMarkerObject = markerObject;
-                // _this.callbacks.onMouseOverMarker(marker, markerObject, originalEvent);
-                // if (enableTooltip) {
-                //     _this.tooltip.show(originalEvent.clientX, originalEvent.clientY, getTooltipContent(marker));
-                // }
+                var originalEvent = event.data.originalEvent;
+                _this.activeMarker = marker;
+                _this.activeMarkerObject = markerObject;
+                _this.callbacks.onMouseOverMarker(marker, markerObject, originalEvent);
+                if (enableTooltip) {
+                    _this.tooltip.show(originalEvent.clientX, originalEvent.clientY, getTooltipContent(marker));
+                }
             });
         });
         // remove marker objects that are stale
