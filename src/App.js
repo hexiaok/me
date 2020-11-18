@@ -5,7 +5,7 @@ import Bio from './Bio'
 import GlobeRight from './GlobeRight'
 import GlobeLeft from './GlobeLeft'
 import JourneyContent from './JourneyContent'
-
+import Close from './Close'
 
 class App extends React.Component {
 
@@ -24,7 +24,7 @@ class App extends React.Component {
 
         {this.state.moveGlobeToLeft === true ? <Bio/> : null}
         {this.state.moveGlobeToLeft === true ? <GlobeRight /> : null}
-
+        {this.state.moveGlobeToLeft === true ? null :<Close />}
         {this.state.moveGlobeToLeft === true ? null :<GlobeLeft />}
         {this.state.moveGlobeToLeft === true ? null :<JourneyContent />}
      

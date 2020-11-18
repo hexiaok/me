@@ -40,15 +40,21 @@ div {
   color: #888;
 }
 
-.journey{
+.right-align{
   display: flex;
-  justify-content: right;
-
+  flex-direction: row-reverse;
 }
 
 .journey-header{
   font-size: 48px;
   font-weight: 600;
+  letter-spacing: .05em;
+  color: #fff;
+}
+
+.close-page{
+  font-size: 18px;
+  font-weight: 200;
   letter-spacing: .05em;
   color: #fff;
 }

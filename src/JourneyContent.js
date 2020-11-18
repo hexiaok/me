@@ -5,8 +5,8 @@ import './App.css';
 function JourneyContent() {
 
     return (
-      <div className="col-xl-8 journey" style={{ padding: "0" }}>
-        <div style={{width: "75%" }}>
+      <div className="right-align col-xl-8" style={{ padding: "7em" }}>
+        <div >
           <h1 className="journey-header">
             Product Designer
             <br />
