@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
 import Container from 'react-bootstrap/Container';
-import Globe from './Globe'
 import Bio from './Bio'
 import GlobeRight from './GlobeRight'
 import GlobeLeft from './GlobeLeft'

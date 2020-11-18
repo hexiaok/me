@@ -17,3 +17,38 @@ canvas:focus {
 div {
   white-space: pre-wrap;
 } 
+
+.bio{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff
+}
+
+.bio-header{
+  font-size: 48px;
+  font-weight: 600;
+  letter-spacing: .05em;
+}
+
+.bio-body{
+  font-size: 14px;
+  font-weight: 200;
+  padding-top: 1em;
+  line-height: 2.1;
+  font-family: sans-serif;
+  color: #888;
+}
+
+.journey{
+  display: flex;
+  justify-content: right;
+
+}
+
+.journey-header{
+  font-size: 48px;
+  font-weight: 600;
+  letter-spacing: .05em;
+  color: #fff;
+}
