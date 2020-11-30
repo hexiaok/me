@@ -5,7 +5,7 @@ import Globe from './Globe'
 function GlobeLeft() {
 
     return (
-      <div className="col-xl-4" style={{display: "flex", alignItems: "center" }}>
+      <div className="col-xl-5 order-xl-1" style={{display: "flex", alignItems: "center" }}>
         <div style={{height: "60%", width: "100%", position: "relative", left: "-200px"}}>
          <Globe/>
         </div>
@@ -14,3 +14,4 @@ function GlobeLeft() {
 }
 
 export default GlobeLeft;
+

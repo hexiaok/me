@@ -6,6 +6,7 @@ import GlobeRight from './GlobeRight'
 import GlobeLeft from './GlobeLeft'
 import JourneyContent from './JourneyContent'
 import Close from './Close'
+import Globe from './Globe'
 
 class App extends React.Component {
 
@@ -18,15 +19,16 @@ class App extends React.Component {
     return (
     <div className="App">
       <p style={{backgroundColor: "white"}} onClick={() => this.setState({moveGlobeToLeft: !this.state.moveGlobeToLeft})}>Click</p>
-      
+      {this.state.moveGlobeToLeft === true ? null :<Close />}
       <Container fluid>
         <div className="row" style={{ height: "100vh" }}>
 
         {this.state.moveGlobeToLeft === true ? <Bio/> : null}
         {this.state.moveGlobeToLeft === true ? <GlobeRight /> : null}
-        {this.state.moveGlobeToLeft === true ? null :<Close />}
-        {this.state.moveGlobeToLeft === true ? null :<GlobeLeft />}
+        
         {this.state.moveGlobeToLeft === true ? null :<JourneyContent />}
+        {this.state.moveGlobeToLeft === true ? null :<GlobeLeft />}
+        
      
 
         </div>
