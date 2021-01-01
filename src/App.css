@@ -2,7 +2,7 @@ canvas:focus {
   outline: none
 }
 
-.tippy-box[data-theme~='tomato'] {
+.tippy-box[data-theme~='custom'] {
   background-color: rgba(247, 196, 66, 0.65);
   color: #080808;
   border-radius: 0;
@@ -10,7 +10,7 @@ canvas:focus {
   padding: 0.5em;
 }
 
-.tippy-box[data-theme~='tomato'][data-placement^='top'] > .tippy-arrow::before {
+.tippy-box[data-theme~='custom'][data-placement^='top'] > .tippy-arrow::before {
   border-top-color: rgba(247, 196, 66, 0);
 }
 
