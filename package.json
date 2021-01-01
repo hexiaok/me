@@ -13,7 +13,7 @@
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.0",
     "react-dom": "^16.13.1",
-    "react-globe": "^4.0.0",
+    "react-globe-custom": "git+https://github.com/tgmof/react-globe.git#3c0bb5d1a8e86a43c8dfa74189bdcbf589ecea9a",
     "react-scripts": "3.4.1",
     "react-three-fiber": "^4.2.18",
     "three": "^0.115.0",

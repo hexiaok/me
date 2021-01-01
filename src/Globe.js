@@ -1,56 +1,43 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import './App.css';
-import ReactGlobe from './react-globe';
+import ReactGlobe from 'react-globe-custom';
 import markers from './markers';
 import 'tippy.js/dist/tippy.css';
 import 'tippy.js/animations/scale.css';
 
 
-function returnTootipText(marker) {
-
-  if (marker.city == "Berlin") {
-    
+function Globe() {
+  const [autoRotate, setAutoRotate] = useState(true)
+  const onClickMarker = (_marker, _markerObject, _event) => {
+    setAutoRotate(!autoRotate)
   }
 
-  return `${marker.year} ${marker.city}\n${marker.activity}`
-}
+  const returnTootipText = (marker) => {
+    if (marker.city === "Berlin") {
 
-function Globe() {
-    const [click, setClick] = useState(0)
-//     function onMouseOverMarker(marker, markerObject, event) {
-//     setEvent({
-//       type: 'MOUSEOVER',
-//       marker,
-//       markerObjectID: markerObject.uuid,
-//       pointerEventPosition: { x: event.clientX, y: event.clientY },
-//     })
-//   }
-    return (
-    // <div onMouseDown={() => setClick(!click)}>
-        <ReactGlobe
-        globeOptions={{
-          enableBackground: false,
-          enableClouds: false,
-          enableGlow: false,
-          cloudsTexture: null
-        }}
-        cameraOptions={{
-          autoRotateSpeed: 1,
-          enableZoom: true,
-          clickedOut: click
-        }}
-        markers={markers}
-        // onMouseOverMarker={onMouseOverMarker}
-        markerOptions={{
-          glowCoefficient: 0.25,
-          activeScale: 1,
-          enableTooltip: true,
-          getTooltipContent: returnTootipText,
-          radiusScaleRange: [0.001, 0.045],
-        }}
-      /> 
-    // </div>
-    );
+    }
+    return `${marker.year} ${marker.city}\n${marker.activity}`
+  }
+
+  return (
+    <ReactGlobe
+      markers={markers}
+      options={{
+        enableGlobeGlow: false,
+        globeGlowCoefficient: 0.25,
+        enableMarkerTooltip: true,
+        markerTooltipRenderer: returnTootipText,
+        markerRadiusScaleRange: [0.001, 0.045],
+        enableCameraZoom: true,
+        cameraAutoRotateSpeed: autoRotate ? 1 : 0
+      }}
+      globeTexture="https://raw.githubusercontent.com/chrisrzhou/react-globe/main/textures/globe_dark.jpg"
+      globeCloudsTexture={null}
+      globeBackgroundTexture={null}
+      onClickMarker={onClickMarker}
+      onDefocus={onClickMarker}
+    />
+  );
 }
 
 export default Globe;
