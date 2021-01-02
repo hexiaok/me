@@ -8,15 +8,17 @@ import 'tippy.js/animations/scale.css';
 
 function Globe() {
   const [autoRotate, setAutoRotate] = useState(true)
-  const [globe, setGlobe] = useState(null);
+  const [globe, setGlobe] = useState(null)
   const onClickTouchMarker = (_marker, markerObject, event) => {
     setAutoRotate(false)
     globe.isLocked = true
     if (globe.options.enableMarkerTooltip) {
+      const clientX = event.clientX ? event.clientX : event.touches[0].clientX
+      const clientY = event.clientY ? event.clientY : event.touches[0].clientY
       globe.tooltip.show(
-        event.clientX,
-        event.clientY,
-        globe.options.markerTooltipRenderer(markerObject.marker),
+        clientX,
+        clientY,
+        globe.options.markerTooltipRenderer(markerObject.marker)
       )
     }
     return false
