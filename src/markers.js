@@ -1,7 +1,7 @@
 
 const markers = [
     {
-        id: 1,
+        id: 'Ningbo',
         city: 'Ningbo',
         year: '-2006 | ',
         activity: 'Just a kid',
@@ -11,7 +11,7 @@ const markers = [
 
     },
     {
-        id: 2,
+        id: 'Tianjin',
         city: 'Tianjin',
         year: '2006-2011 | ',
         activity: 'Student',
@@ -20,7 +20,7 @@ const markers = [
         color: 'white',
     },
     {
-        id: 3,
+        id: 'Boston',
         city: 'Boston',
         year: '2011-2015 | ',
         activity: 'Student/Researcher',
@@ -28,17 +28,8 @@ const markers = [
         value: 100,
         color: 'white',
     },
-    // {
-    //     id: 4,
-    //     city: 'Little Farmer\'s Cay | ',
-    //     color: 'white',
-    //     year: '2013',
-    //     activity: 'researcher',
-    //     coordinates: [23.9580, -76.3224],
-    //     value: 100,
-    // },
     {
-        id: 4,
+        id: 'Singapore',
         city: 'Singapore',
         year: '2015-2019 | ',
         activity: 'UX Designer',
@@ -47,7 +38,7 @@ const markers = [
         color: 'white',
     },
     {
-        id: 5,
+        id: 'Berlin',
         city: 'Berlin',
         year: '2019- | ',
         activity: 'Product Designer',

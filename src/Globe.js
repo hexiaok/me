@@ -8,8 +8,28 @@ import 'tippy.js/animations/scale.css';
 
 function Globe() {
   const [autoRotate, setAutoRotate] = useState(true)
-  const onClickMarker = (_marker, _markerObject, _event) => {
-    setAutoRotate(!autoRotate)
+  const [globe, setGlobe] = useState(null);
+  const onClickTouchMarker = (_marker, markerObject, event) => {
+    setAutoRotate(false)
+    globe.isLocked = true
+    if (globe.options.enableMarkerTooltip) {
+      globe.tooltip.show(
+        event.clientX,
+        event.clientY,
+        globe.options.markerTooltipRenderer(markerObject.marker),
+      )
+    }
+    return false
+  }
+  const onDefocus = (_previousCoordinates, _shouldDefocus) => {
+    if (!globe.isLocked && !autoRotate) {
+      if (globe.options.enableMarkerTooltip) {
+        globe.tooltip.hide()
+      }
+      setAutoRotate(true)
+    }
+    globe.isLocked = false
+    return false
   }
 
   const returnTootipText = (marker) => {
@@ -34,8 +54,12 @@ function Globe() {
       globeTexture="https://raw.githubusercontent.com/chrisrzhou/react-globe/main/textures/globe_dark.jpg"
       globeCloudsTexture={null}
       globeBackgroundTexture={null}
-      onClickMarker={onClickMarker}
-      onDefocus={onClickMarker}
+      onClickMarker={onClickTouchMarker}
+      onTouchMarker={onClickTouchMarker}
+      onMouseOverMarker={() => false}
+      onMouseOutMarker={() => false}
+      onDefocus={onDefocus}
+      onGetGlobe={setGlobe}
     />
   );
 }
