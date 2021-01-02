@@ -6,7 +6,6 @@ import GlobeRight from './GlobeRight'
 import GlobeLeft from './GlobeLeft'
 import JourneyContent from './JourneyContent'
 
-
 class App extends React.Component {
 
   state = { moveGlobeToLeft: true }
