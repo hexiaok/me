@@ -4,30 +4,34 @@ import ReactGlobe from 'react-globe-custom';
 import markers from './markers';
 
 const Globe = () => {
-  const [autoRotate, setAutoRotate] = useState("rotate")
+  let [autoRotate, setAutoRotate] = useState("rotate")
   const [globe, setGlobe] = useState(null)
+  const touchSequence = ["onTouchMarker", "onTouchDefocus", "onTouchOutside"]
+  const clickSequence = ["onClickOutside", "onClickMarker", "onClickDefocus"]
 
   const handleClickOutside = () => {
-    console.log("handleClickOutside", globe.rotate)
-    switch (globe.rotate) {
-      case "AfterOnClickOutside":
+    console.debug("handleClickOutside", autoRotate)
+    switch (autoRotate) {
+      case clickSequence[2]:
+      case touchSequence[2]:
         onDefocus()
         break
-      case "AfterOnDefocus":
-        globe.rotate = "AfterOnClickOutside"
-        setAutoRotate("AfterOnClickOutside")
+      case touchSequence[1]:
+        setAutoRotate(touchSequence[2])
         break
-      case "rotate":
-      case "onClickTouchMarker":
-      case "AfterOnClickTouchMarker":
       default:
     }
   }
 
   const onClickTouchMarker = (_marker, markerObject, event) => {
-    console.log("onClickTouchMarker", globe.rotate)
-    setAutoRotate("onClickTouchMarker")
-    globe.rotate = "onClickTouchMarker"
+    console.debug("onClickMarker", autoRotate, event.type)
+    autoRotate = clickSequence[1]
+    if (event.type === "touchstart") {
+      autoRotate = touchSequence[0]
+    }
+    // stop rotation
+    setAutoRotate(autoRotate)
+    // show tooltip
     if (globe.options.enableMarkerTooltip) {
       const clientX = event.clientX ? event.clientX : event.touches[0].clientX
       const clientY = event.clientY ? event.clientY : event.touches[0].clientY
@@ -40,43 +44,39 @@ const Globe = () => {
     return false
   }
   const onDefocus = (_previousCoordinates, _shouldDefocus) => {
-    console.log("onDefocus", globe.rotate)
-    switch (globe.rotate) {
-      case "AfterOnClickOutside":
+    console.debug("onDefocus", autoRotate)
+    switch (autoRotate) {
+      case clickSequence[2]:
+      case touchSequence[2]:
         if (globe.options.enableMarkerTooltip) {
           globe.tooltip.hide()
         }
-        globe.rotate = "rotate"
+        autoRotate = "rotate"
         setAutoRotate("rotate")
         break
-      case "onClickTouchMarker":
-        globe.rotate = "AfterOnDefocus"
-        setAutoRotate("AfterOnDefocus")
+      case touchSequence[0]:
+        autoRotate = touchSequence[1]
         break
-      case "rotate":
+      case clickSequence[1]:
+        setAutoRotate(clickSequence[2])
+        break
       default:
-        break
     }
-
     return false
   }
-
   const returnTootipText = (marker) => {
-    if (marker.city === "Berlin") {
-
-    }
     return `${marker.year} ${marker.city}\n${marker.activity}`
   }
 
   useEffect(() => {
-    document.addEventListener("mousedown", handleClickOutside);
-    document.addEventListener("touchstart", handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside)
+    document.addEventListener("touchstart", handleClickOutside)
 
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-      document.removeEventListener("touchstart", handleClickOutside);
-    };
-  });
+      document.removeEventListener("mousedown", handleClickOutside)
+      document.removeEventListener("touchstart", handleClickOutside)
+    }
+  })
 
   return (
     <ReactGlobe
@@ -100,7 +100,7 @@ const Globe = () => {
       onDefocus={onDefocus}
       onGetGlobe={setGlobe}
     />
-  );
+  )
 }
 
-export default Globe;
+export default Globe
