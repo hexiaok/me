@@ -82,15 +82,20 @@ const Globe = () => {
     <ReactGlobe
       markers={markers}
       options={{
-        enableGlobeGlow: false,
-        globeGlowCoefficient: 0,
+        enableGlobeGlow: true,
+        globeGlowCoefficient: 0.11,
+        globeGlowColor: 'white',
+        globeGlowPower: 12,
+        globeGlowRadiusScale: 0.45,
+        enableMarkerGlow: true,
+        markerGlowPower: 10,
         enableMarkerTooltip: true,
         markerTooltipRenderer: returnTootipText,
         markerRadiusScaleRange: [0.001, 0.045],
         enableCameraZoom: true,
         cameraAutoRotateSpeed: autoRotate === "rotate" ? 1 : 0
       }}
-      globeTexture="https://raw.githubusercontent.com/chrisrzhou/react-globe/main/textures/globe_dark.jpg"
+      globeTexture="./globe_dark.jpg"
       globeCloudsTexture={null}
       globeBackgroundTexture={null}
       onClickMarker={onClickTouchMarker}

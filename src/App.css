@@ -1,19 +1,58 @@
 canvas:focus {
   outline: none
 }
+div {
+  white-space: pre-wrap;
+} 
+
 
 .tippy-box[data-theme~='custom'] {
   background-color: rgba(247, 196, 66, 0.65);
   color: #080808;
   border-radius: 0;
   line-height: 1.6;
-  padding: 0.5em;
+  padding: 1.2em;
+  font-size: 14px;
 }
 
 .tippy-box[data-theme~='custom'][data-placement^='top'] > .tippy-arrow::before {
   border-top-color: rgba(247, 196, 66, 0);
 }
 
-div {
-  white-space: pre-wrap;
-} 
+.index-text{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff
+}
+
+.bio-header{
+  font-size: 48px;
+  color: #080808;
+  font-weight: 600;
+  letter-spacing: .05em;
+}
+
+.bio-body{
+  font-size: 14px;
+  font-weight: 100;
+  padding-top: 1em;
+  line-height: 2.1;
+  font-family: sans-serif;
+  color: #888;
+}
+
+.bio-link {
+  font-size: 16px;
+  font-weight: 200;
+  color: #080808;
+  
+}
+
+a.bio-link:hover {
+  color: rgb(247, 196, 66);
+}
+
+a.bio-link:active {
+  color: rgb(247, 196, 66);
+}
