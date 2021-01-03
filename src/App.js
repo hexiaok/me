@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import Container from 'react-bootstrap/Container';
 import Bio from './Bio'
@@ -6,30 +6,28 @@ import GlobeRight from './GlobeRight'
 import GlobeLeft from './GlobeLeft'
 import JourneyContent from './JourneyContent'
 
-class App extends React.Component {
+function App() {
+  const [moveGlobeToLeft, setMoveGlobeToLeft] = useState(true)
 
-  state = { moveGlobeToLeft: true }
+  return (
+    <div className="App">
+      <p style={{ backgroundColor: "white" }} onClick={() => setMoveGlobeToLeft(!moveGlobeToLeft)}>Click</p>
 
-  render() {
-    return (
-      <div className="App">
-        <p style={{ backgroundColor: "white" }} onClick={() => this.setState({ moveGlobeToLeft: !this.state.moveGlobeToLeft })}>Click</p>
+      <Container fluid>
+        <div className="row" style={{ height: "100vh" }}>
 
-        <Container fluid>
-          <div className="row" style={{ height: "100vh" }}>
+          {moveGlobeToLeft === true ? <Bio /> : null}
+          {moveGlobeToLeft === true ? <GlobeRight /> : null}
 
-            {this.state.moveGlobeToLeft === true ? <Bio /> : null}
-            {this.state.moveGlobeToLeft === true ? <GlobeRight /> : null}
-
-            {this.state.moveGlobeToLeft === true ? null : <GlobeLeft />}
-            {this.state.moveGlobeToLeft === true ? null : <JourneyContent />}
+          {moveGlobeToLeft === true ? null : <GlobeLeft />}
+          {moveGlobeToLeft === true ? null : <JourneyContent />}
 
 
-          </div>
-        </Container>
-      </div>
-    )
-  }
+        </div>
+      </Container>
+    </div>
+  )
+
 }
 
 export default App;
